@@ -1,4 +1,4 @@
-package com.szytka.szystem.domain;
+package com.szytka.parking.domain;
 
 import java.io.Serializable;
 
