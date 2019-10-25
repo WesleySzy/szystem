@@ -1,13 +1,13 @@
-package com.szytka.szystem;
+package com.szytka.parking;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SzystemApplication {
+public class ParkingApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SzystemApplication.class, args);
+		SpringApplication.run(ParkingApplication.class, args);
 	}
 
 }

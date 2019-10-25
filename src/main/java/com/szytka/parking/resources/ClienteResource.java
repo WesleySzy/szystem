@@ -1,4 +1,4 @@
-package com.szytka.szystem.resources;
+package com.szytka.parking.resources;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,19 +7,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.szytka.szystem.domain.Categoria;
+import com.szytka.parking.domain.Cliente;
 
 @RestController
-@RequestMapping(value="/categorias")
-public class CategoriaResource {
+@RequestMapping(value="/clientes")
+public class ClienteResource {
 	
 	@RequestMapping(method=RequestMethod.GET)
-	public List<Categoria> listar() {
+	public List<Cliente> listar() {
 		
-		Categoria cat = new Categoria(1,"Informatica");
-		Categoria cat2 = new Categoria(2,"Escritorio");
+		Cliente cat = new Cliente(1,"Joao");
+		Cliente cat2 = new Cliente(2,"Jose");
 		
-		List<Categoria> lista = new ArrayList<>();
+		List<Cliente> lista = new ArrayList<>();
 		lista.add(cat);
 		lista.add(cat2);
 		

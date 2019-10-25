@@ -1,38 +1,65 @@
-package com.szytka.szystem.domain;
+package com.szytka.parking.domain;
+
+
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
-public class Categoria implements Serializable {
+public class Cliente implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private Integer id_cliente;
 	private String nome;
 
-	public Categoria() {
+	public Cliente() {
 
 	}
 
-	public Categoria(Integer id, String nome) {
+	public Cliente(Integer id, String nome) {
 		super();
-		this.id = id;
+		this.id_cliente = id;
 		this.nome = nome;
 	}
 
+	@OneToMany(mappedBy = "cliente")
+	private List<Endereco> pedidos = new ArrayList<>();
+	
+	@ManyToOne
+	@JoinColumn(name="id_cidade")
+	private Cidade cidade;
+	
+	@ManyToOne
+	@JoinColumn(name="id_end")
+	private Endereco endereco;
+	
+	@ManyToOne
+	@JoinColumn(name="id_carro")
+	private Carro carro;
+	
+	@ManyToOne
+	@JoinColumn(name="id_tel")
+	private Telefone telefone;
+
+
 	public Integer getId() {
-		return id;
+		return id_cliente;
 	}
 
 	public void setId(Integer id) {
-		this.id = id;
+		this.id_cliente = id;
 	}
 
 	public String getNome() {
@@ -47,7 +74,7 @@ public class Categoria implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((id_cliente == null) ? 0 : id_cliente.hashCode());
 		return result;
 	}
 
@@ -59,13 +86,12 @@ public class Categoria implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Categoria other = (Categoria) obj;
-		if (id == null) {
-			if (other.id != null)
+		Cliente other = (Cliente) obj;
+		if (id_cliente == null) {
+			if (other.id_cliente != null)
 				return false;
-		} else if (!id.equals(other.id))
+		} else if (!id_cliente.equals(other.id_cliente))
 			return false;
 		return true;
 	}
-
 }
